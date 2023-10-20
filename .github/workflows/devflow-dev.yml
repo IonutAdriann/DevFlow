@@ -15,20 +15,21 @@ jobs:
           node-version: 18
       - name: Install AWS CLI
         run: |
-          # Install AWS CLI
-          curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-          unzip awscliv2.zip
-          sudo ./aws/install --update
+            # Install AWS CLI
+            curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo ./aws/install
       - name: Install Elastic Beanstalk CLI
         run: |
-          # Install Elastic Beanstalk CLI using apt
-          sudo apt-get update
-          sudo apt-get install -y awsebcli
+            # Download and install Elastic Beanstalk CLI
+            curl "https://s3.amazonaws.com/elasticbeanstalk-cli-resources/cli/AWS-ElasticBeanstalk-CLI-2.5.1.zip" -o "eb-cli.zip"
+            unzip -q eb-cli.zip -d eb-cli
+            sudo mv eb-cli/eb /usr/local/bin/
       - name: Configure AWS credentials
         run: |
-          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Deploy to Elastic Beanstalk
         run: |
-          eb use ${{ secrets.EB_PROD_ENV_NAME }}
-          eb deploy
+            eb use ${{ secrets.EB_PROD_ENV_NAME }}
+            eb deploy
