@@ -2,22 +2,16 @@
   "name": "devflow",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc -w",
+    "clean": "rimraf dist",
+    "prestart": "npm run clean && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IonutAdriann/DevFlow.git"
-  },
-  "author": "ionutadriann",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/IonutAdriann/DevFlow/issues"
-  },
-  "homepage": "https://github.com/IonutAdriann/DevFlow#readme",
   "devDependencies": {
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "@types/node": "^18.x",
+    "rimraf": "^5.0.0"
   }
 }
