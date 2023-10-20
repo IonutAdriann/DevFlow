@@ -20,15 +20,22 @@ jobs:
           unzip awscliv2.zip
           sudo ./aws/install --update
             
-          # Install Elastic Beanstalk CLI
+          - name: Install pip
+        run: |
+          # Install pip
           sudo apt-get update
           sudo apt-get install -y python-pip
+
+      - name: Install Elastic Beanstalk CLI
+        run: |
+          # Install Elastic Beanstalk CLI
           sudo pip install awsebcli
+
       - name: Configure AWS credentials
         run: |
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  
+
       - name: Deploy to Elastic Beanstalk
         run: |
           eb use ${{ secrets.EB_PROD_ENV_NAME }}
