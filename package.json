@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/IonutAdriann/DevFlow/issues"
   },
-  "homepage": "https://github.com/IonutAdriann/DevFlow#readme"
+  "homepage": "https://github.com/IonutAdriann/DevFlow#readme",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
 }
