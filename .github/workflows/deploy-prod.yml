@@ -1,0 +1,46 @@
+name: PROD environment deployment workflow
+
+on:
+  push:
+    tags:
+      - DEV # runs on commits tagged with 'DEV'
+  workflow_dispatch:
+    inputs:
+      blockDeployment:
+        description: "Block deployment to prod (true/false)?"
+        required: false
+        default: "true"
+      testingTime:
+        description: "Hours to block the deployment (max 4)."
+        required: false
+        default: "1"
+      environmentName:
+        description: "Environment to deploy to (prod)."
+        required: true
+        default: prod
+
+jobs:
+  set-environment:
+    name: Set environment to ${{ github.event.inputs.environmentName }}
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.set-env.outputs.environment }}
+    steps:
+      - name: Install jq
+        run: sudo apt-get install jq
+        
+      - name: Set environment
+        id: set-env
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+             TARGET_ENVIRONMENT=${{ github.event.inputs.environmentName }}
+          else
+            if [[ "${{ github.ref }}" == *"DEV"* ]]; then
+              TARGET_ENVIRONMENT=prod
+            else
+              echo "No matching environment found for tag. Exiting."
+              exit 1
+            fi
+          fi
+
+          echo "environment=${TARGET_ENVIRONMENT}" >> $GITHUB_OUTPUT
