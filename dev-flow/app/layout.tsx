@@ -1,7 +1,8 @@
-import { ClerkProvider } from "@clerk/nextjs";
 import React from "react";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Inter, Space_Grotesk } from "next/font/google";
 import type { Metadata } from "next";
+
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeProvider";
 
@@ -14,15 +15,15 @@ const inter = Inter({
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-space-grotesk",
+  variable: "--font-spaceGrotesk",
 });
 
 export const metadata: Metadata = {
-  title: "Dev Flow",
+  title: "DevFlow",
   description:
-    "Dev Flow is a collaborative online platform designed to empower individuals to share and expand their knowledge in a wide range of topics. Much like Stack Overflow, Dev Flow is a community-driven Q&A platform where users can ask questions, provide answers, and engage in discussions to foster a rich exchange of information.",
+    "A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.",
   icons: {
-    icon: "assets/images/site-logo.svg",
+    icon: "/assets/images/site-logo.svg",
   },
 };
 
