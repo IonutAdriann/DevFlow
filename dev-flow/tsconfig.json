@@ -18,12 +18,8 @@
         "name": "next"
       }
     ],
-    "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"],
-      "@dev-flow/*": ["dev-flow/*"],
-      "@components/*": ["dev-flow/components/*"],
-      "@lib/*": ["dev-flow/lib/*"]
+      "@/*": ["./*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
