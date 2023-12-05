@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { useTheme } from "@/context/ThemeProvider";
+import { useTheme } from "@/../context/ThemeProvider";
 
 import {
   Menubar,
@@ -10,9 +10,9 @@ import {
   MenubarItem,
   MenubarMenu,
   MenubarTrigger,
-} from "@/components/ui/menubar";
+} from "@/../components/ui/menubar";
 import Image from "next/image";
-import { themes } from "@/constants";
+import { themes } from "@/../constants";
 
 const Theme = () => {
   const { mode, setMode } = useTheme();
